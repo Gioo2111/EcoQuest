@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkpmg6u3hqw8i"]
+
+[ext_resource type="AudioStream" uid="uid://d31tdi5a2p57d" path="res://Novo/bg_music.wav" id="1_16u18"]
+[ext_resource type="Script" path="res://AudioStreamPlayer.gd" id="1_w0d2y"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_16u18")
+pitch_scale = 0.98
+autoplay = true
+script = ExtResource("1_w0d2y")

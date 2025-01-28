@@ -1,0 +1,72 @@
+[gd_scene load_steps=11 format=3 uid="uid://cemhfyq45m5am"]
+
+[ext_resource type="Script" path="res://scripts/lixo.gd" id="1_i1ovq"]
+[ext_resource type="Texture2D" uid="uid://dw0v1vrbcx8jv" path="res://Items, UI & effects/effects/Green_Sparkle (16 x 16).png" id="2_wvsjk"]
+[ext_resource type="AudioStream" uid="uid://dsgk7x5g2unyq" path="res://sounds/coin_sfx.wav" id="3_a3wim"]
+[ext_resource type="Texture2D" uid="uid://bc60uvmyokbas" path="res://Items, UI & effects/Items/Scraps/Scraps (16 x 16).png" id="3_knvsv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wmj50"]
+atlas = ExtResource("2_wvsjk")
+region = Rect2(0, 0, 20, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f8vgv"]
+atlas = ExtResource("2_wvsjk")
+region = Rect2(20, 0, 20, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ni61j"]
+atlas = ExtResource("2_wvsjk")
+region = Rect2(40, 0, 20, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ouyq"]
+atlas = ExtResource("3_knvsv")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e6xds"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wmj50")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f8vgv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ni61j")
+}],
+"loop": false,
+"name": &"collect",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ouyq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h128n"]
+size = Vector2(18, 10)
+
+[node name="scraps" type="Area2D"]
+collision_layer = 8
+script = ExtResource("1_i1ovq")
+
+[node name="anim" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_e6xds")
+autoplay = "default"
+frame_progress = 0.347661
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_h128n")
+
+[node name="coin_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_a3wim")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]

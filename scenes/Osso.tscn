@@ -1,0 +1,270 @@
+[gd_scene load_steps=15 format=3 uid="uid://bt18hh8kbjg37"]
+
+[ext_resource type="Script" path="res://script/Osso.gd" id="1_epxe1"]
+[ext_resource type="Texture2D" uid="uid://3uotwml1kauk" path="res://Sprite Pack 5/Osso/Osso_Idle (32 x 32).png" id="2_yk1m5"]
+[ext_resource type="Texture2D" uid="uid://bv8ndqn7mwg4j" path="res://Sprite Pack 5/Osso/Hurt (32 x 32).png" id="3_wpy5e"]
+[ext_resource type="Texture2D" uid="uid://c2kn7nblkwqdq" path="res://Sprite Pack 5/Osso/Bone_Pile (32 x 32).png" id="4_fi7k8"]
+[ext_resource type="Texture2D" uid="uid://my2k8rw2mvwk" path="res://Sprite Pack 5/Osso/Standing (32 x 32).png" id="5_jc83j"]
+[ext_resource type="PackedScene" uid="uid://dfwes3s7m7hs0" path="res://actors/hitbox.tscn" id="5_n34tk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dajsg"]
+size = Vector2(32, 33)
+
+[sub_resource type="Animation" id="Animation_da4tn"]
+resource_name = "Idle"
+length = 0.81
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [9]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("texture:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_jc83j")]
+}
+
+[sub_resource type="Animation" id="Animation_xexm7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [9]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("texture:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [ExtResource("2_yk1m5")]
+}
+
+[sub_resource type="Animation" id="Animation_w6lfl"]
+resource_name = "Upatk"
+length = 0.9
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0, 0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [9]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("texture:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [ExtResource("2_yk1m5")]
+}
+
+[sub_resource type="Animation" id="Animation_6tra0"]
+resource_name = "die"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("texture:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [ExtResource("4_fi7k8")]
+}
+
+[sub_resource type="Animation" id="Animation_1i8g3"]
+resource_name = "hurt"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("texture:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [ExtResource("3_wpy5e")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1iygf"]
+_data = {
+"Idle": SubResource("Animation_da4tn"),
+"RESET": SubResource("Animation_xexm7"),
+"Upatk": SubResource("Animation_w6lfl"),
+"die": SubResource("Animation_6tra0"),
+"hurt": SubResource("Animation_1i8g3")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0t8u7"]
+size = Vector2(20.5, 5.5)
+
+[node name="Osso" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 4
+collision_mask = 35
+script = ExtResource("1_epxe1")
+
+[node name="texture" type="Sprite2D" parent="."]
+position = Vector2(5.5, -22.5)
+scale = Vector2(1.34375, 1.40625)
+texture = ExtResource("2_yk1m5")
+flip_h = true
+hframes = 9
+
+[node name="Side_point" type="Marker2D" parent="texture"]
+position = Vector2(-11.5349, 4.62222)
+
+[node name="Up_point2" type="Marker2D" parent="texture"]
+position = Vector2(-2.60465, -10.3111)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(5, -16.5)
+shape = SubResource("RectangleShape2D_dajsg")
+
+[node name="anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1iygf")
+}
+autoplay = "Idle"
+speed_scale = 0.7
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+
+[node name="hitbox" parent="." instance=ExtResource("5_n34tk")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(2.75, -35.75)
+shape = SubResource("RectangleShape2D_0t8u7")
+debug_color = Color(0.891661, 0.228748, 0.578951, 0.42)
+
+[node name="Side_cooldown" type="Timer" parent="."]
+
+[node name="Up_cooldown2" type="Timer" parent="."]
+
+[connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]
+[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]

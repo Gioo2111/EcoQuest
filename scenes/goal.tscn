@@ -1,0 +1,64 @@
+[gd_scene load_steps=10 format=3 uid="uid://dalw64jfcop46"]
+
+[ext_resource type="Script" path="res://scripts/goal.gd" id="1_bxk0n"]
+[ext_resource type="Texture2D" uid="uid://dw0v1vrbcx8jv" path="res://Items, UI & effects/effects/Green_Sparkle (16 x 16).png" id="2_ac5mc"]
+[ext_resource type="AudioStream" uid="uid://d4kgg3a8g0i0h" path="res://sounds/trans_sfx.wav" id="3_yyue3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r28gd"]
+atlas = ExtResource("2_ac5mc")
+region = Rect2(0, 0, 20, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_73muh"]
+atlas = ExtResource("2_ac5mc")
+region = Rect2(20, 0, 20, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b5ony"]
+atlas = ExtResource("2_ac5mc")
+region = Rect2(40, 0, 20, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4da55"]
+atlas = ExtResource("2_ac5mc")
+region = Rect2(60, 0, 20, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gemsj"]
+animations = [{
+"frames": [{
+"duration": 1.1,
+"texture": SubResource("AtlasTexture_r28gd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_73muh")
+}, {
+"duration": 1.1,
+"texture": SubResource("AtlasTexture_b5ony")
+}, {
+"duration": 0.9,
+"texture": SubResource("AtlasTexture_4da55")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sny07"]
+radius = 16.2788
+
+[node name="goal" type="Area2D"]
+collision_layer = 2
+script = ExtResource("1_bxk0n")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(1.35938, 1.4375)
+sprite_frames = SubResource("SpriteFrames_gemsj")
+autoplay = "default"
+frame_progress = 0.639782
+speed_scale = 1.3
+
+[node name="collision" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_sny07")
+
+[node name="trans_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_yyue3")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

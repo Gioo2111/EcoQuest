@@ -1,0 +1,224 @@
+[gd_scene load_steps=13 format=3 uid="uid://dkav3uhgvhivq"]
+
+[ext_resource type="Script" path="res://scripts/enemy1_ground.gd" id="1_hgv1p"]
+[ext_resource type="Texture2D" uid="uid://bg0t33ys8opmy" path="res://sprites/Enemy1/Walk.png" id="1_retv1"]
+[ext_resource type="Texture2D" uid="uid://hp67fyt2rslc" path="res://sprites/Enemy1/Hurt.png" id="2_wjtay"]
+[ext_resource type="Texture2D" uid="uid://by8hbm7riyeul" path="res://sprites/Enemy1/Idle.png" id="3_4hoeu"]
+[ext_resource type="PackedScene" uid="uid://dfwes3s7m7hs0" path="res://scenes/hitbox.tscn" id="4_c1no6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l46t7"]
+size = Vector2(14, 18)
+
+[sub_resource type="Animation" id="Animation_g45xa"]
+resource_name = "Hurt"
+length = 0.19
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_wjtay")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_hufod"]
+resource_name = "Idle"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_4hoeu")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_fvruv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_retv1")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_b5hjk"]
+resource_name = "walk"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_retv1")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jm070"]
+_data = {
+"Hurt": SubResource("Animation_g45xa"),
+"Idle": SubResource("Animation_hufod"),
+"RESET": SubResource("Animation_fvruv"),
+"walk": SubResource("Animation_b5hjk")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ppy8p"]
+size = Vector2(12, 4)
+
+[node name="Enemy1G" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 4
+collision_mask = 35
+script = ExtResource("1_hgv1p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -9)
+shape = SubResource("RectangleShape2D_l46t7")
+
+[node name="texture" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -16)
+texture = ExtResource("1_retv1")
+hframes = 2
+
+[node name="anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jm070")
+}
+autoplay = "walk"
+speed_scale = 0.4
+
+[node name="wall_detector" type="RayCast2D" parent="."]
+position = Vector2(0, -12)
+target_position = Vector2(-10, 0)
+collision_mask = 2
+
+[node name="ground_detector" type="RayCast2D" parent="."]
+position = Vector2(-5, -12)
+target_position = Vector2(0, 20)
+collision_mask = 2
+
+[node name="hitbox" parent="." instance=ExtResource("4_c1no6")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(0, -20)
+shape = SubResource("RectangleShape2D_ppy8p")
+debug_color = Color(0.896093, 0.224193, 0.568992, 0.42)
+
+[connection signal="animation_finished" from="anim" to="." method="_on_animation_player_animation_finished"]
